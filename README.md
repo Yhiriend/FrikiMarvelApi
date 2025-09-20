@@ -68,7 +68,7 @@ cp appsettings.json.example appsettings.json
 ### 5. Ejecutar la Aplicación
 
 ```bash
-cd FrikiMarvelApi
+cd FrikiMarvelApi (asegurate de estar en el directorio correcto FrikiMarvelApi/FrikiMarvelApi)
 dotnet restore
 dotnet run
 ```
