@@ -1,0 +1,24 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=3306;Database=FrikiMarvelDB;Uid=root;Pwd=;"
+  },
+  "Jwt": {
+    "SecretKey": "aqui_tu_secreto_para_hash",
+    "Issuer": "FrikiMarvelApi",
+    "Audience": "FrikiMarvelApiUsers",
+    "ExpirationHours": 24
+  },
+  "MarvelApi": {
+    "BaseUrl": "https://gateway.marvel.com/v1/public",
+    "PublicKey": "aqui_tu_public_key",
+    "PrivateKey": "aqui_tu_private_key",
+    "TimeoutSeconds": 30
+  }
+}

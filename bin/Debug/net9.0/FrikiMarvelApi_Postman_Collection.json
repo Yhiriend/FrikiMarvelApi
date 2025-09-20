@@ -1,0 +1,998 @@
+{
+	"info": {
+		"_postman_id": "friki-marvel-api-collection",
+		"name": "FrikiMarvel API",
+		"description": "Colección completa para la API de FrikiMarvel desarrollada con .NET 9, DDD, SOLID y Clean Architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "friki-marvel-api"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Juan Pérez\",\n  \"identification\": \"12345678\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Registra un nuevo usuario en el sistema"
+					},
+					"response": [
+						{
+							"name": "User Registered Successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Juan Pérez\",\n  \"identification\": \"12345678\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"User registered successfully\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n    \"refreshToken\": \"base64string...\",\n    \"expiresAt\": \"2024-01-16T10:30:00Z\",\n    \"user\": {\n      \"id\": 1,\n      \"name\": \"Juan Pérez\",\n      \"identification\": \"12345678\",\n      \"email\": \"juan@example.com\",\n      \"lastLogin\": \"2024-01-15T10:30:00Z\"\n    }\n  },\n  \"error\": null,\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						},
+						{
+							"name": "Email Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Juan Pérez\",\n  \"identification\": \"87654321\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"Registration failed\",\n  \"data\": null,\n  \"error\": \"Email already exists\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Autentica un usuario existente"
+					},
+					"response": [
+						{
+							"name": "Login Successful",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"Login successful\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n    \"refreshToken\": \"base64string...\",\n    \"expiresAt\": \"2024-01-16T10:30:00Z\",\n    \"user\": {\n      \"id\": 1,\n      \"name\": \"Juan Pérez\",\n      \"identification\": \"12345678\",\n      \"email\": \"juan@example.com\",\n      \"lastLogin\": \"2024-01-15T10:30:00Z\"\n    }\n  },\n  \"error\": null,\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						},
+						{
+							"name": "Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"wrongpassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"Authentication failed\",\n  \"data\": null,\n  \"error\": \"Invalid email or password\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Validate Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/validate-token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"validate-token"
+							]
+						},
+						"description": "Valida un token JWT"
+					},
+					"response": [
+						{
+							"name": "Valid Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/validate-token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"validate-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"Token is valid\",\n  \"data\": true,\n  \"error\": null,\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoints para autenticación y autorización de usuarios"
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Get Health Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"health"
+							]
+						},
+						"description": "Verifica el estado de la API y la conexión a la base de datos"
+					},
+					"response": [
+						{
+							"name": "Healthy Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/health",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"status\": \"Healthy\",\n  \"isHealthy\": true,\n  \"database\": \"Connected\",\n  \"checkedAt\": \"2024-01-15T10:30:00Z\",\n  \"details\": {\n    \"Database\": \"Connected and accessible\",\n    \"Environment\": \"Development\",\n    \"MachineName\": \"DESKTOP-ABC123\",\n    \"OSVersion\": \"Microsoft Windows NT 10.0.26100.0\"\n  },\n  \"message\": \"API funcionando correctamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/health/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"health",
+								"ping"
+							]
+						},
+						"description": "Endpoint simple para verificar que la API está funcionando"
+					},
+					"response": [
+						{
+							"name": "Pong Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/health/ping",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"health",
+										"ping"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"Pong! API funcionando\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\",\n  \"version\": \"1.0.0\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoints para verificar el estado de la API y la base de datos"
+		},
+		{
+			"name": "Characters",
+			"item": [
+				{
+					"name": "Get All Characters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/characters",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters"
+							]
+						},
+						"description": "Obtiene todos los personajes activos"
+					},
+					"response": [
+						{
+							"name": "Characters List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/characters",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"Personajes obtenidos exitosamente\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Spider-Man\",\n      \"description\": \"El hombre araña\",\n      \"imageUrl\": \"https://example.com/spiderman.jpg\",\n      \"marvelId\": \"1009610\",\n      \"createdAt\": \"2024-01-15T10:30:00Z\",\n      \"updatedAt\": null,\n      \"isActive\": true,\n      \"lastSync\": \"2024-01-15T10:30:00Z\"\n    }\n  ],\n  \"error\": null,\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Character by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/characters/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters",
+								"1"
+							]
+						},
+						"description": "Obtiene un personaje por su ID"
+					},
+					"response": [
+						{
+							"name": "Character Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/characters/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"Personaje obtenido exitosamente\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Spider-Man\",\n    \"description\": \"El hombre araña\",\n    \"imageUrl\": \"https://example.com/spiderman.jpg\",\n    \"marvelId\": \"1009610\",\n    \"createdAt\": \"2024-01-15T10:30:00Z\",\n    \"updatedAt\": null,\n    \"isActive\": true,\n    \"lastSync\": \"2024-01-15T10:30:00Z\"\n  },\n  \"error\": null,\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						},
+						{
+							"name": "Character Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/characters/999",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters",
+										"999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": false,\n  \"message\": \"Personaje con ID 999 no encontrado\",\n  \"data\": null,\n  \"error\": \"Character not found\",\n  \"timestamp\": \"2024-01-15T10:30:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Characters by Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/characters/search?name=spider",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "spider",
+									"description": "Nombre a buscar"
+								}
+							]
+						},
+						"description": "Busca personajes por nombre"
+					},
+					"response": [
+						{
+							"name": "Search Results",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/characters/search?name=spider",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "spider"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Spider-Man\",\n      \"description\": \"El hombre araña\",\n      \"imageUrl\": \"https://example.com/spiderman.jpg\",\n      \"marvelId\": \"1009610\",\n      \"createdAt\": \"2024-01-15T10:30:00Z\",\n      \"updatedAt\": null,\n      \"isActive\": true,\n      \"lastSync\": \"2024-01-15T10:30:00Z\"\n    }\n  ],\n  \"count\": 1,\n  \"message\": \"Búsqueda completada para 'spider'\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Character",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Iron Man\",\n  \"description\": \"El hombre de hierro, genio, multimillonario, playboy y filántropo\",\n  \"imageUrl\": \"https://example.com/ironman.jpg\",\n  \"marvelId\": \"1009368\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/characters",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters"
+							]
+						},
+						"description": "Crea un nuevo personaje"
+					},
+					"response": [
+						{
+							"name": "Character Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Iron Man\",\n  \"description\": \"El hombre de hierro\",\n  \"imageUrl\": \"https://example.com/ironman.jpg\",\n  \"marvelId\": \"1009368\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/characters",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Location",
+									"value": "{{base_url}}/api/characters/2"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 2,\n    \"name\": \"Iron Man\",\n    \"description\": \"El hombre de hierro, genio, multimillonario, playboy y filántropo\",\n    \"imageUrl\": \"https://example.com/ironman.jpg\",\n    \"marvelId\": \"1009368\",\n    \"createdAt\": \"2024-01-15T10:30:00Z\",\n    \"updatedAt\": null,\n    \"isActive\": true,\n    \"lastSync\": \"2024-01-15T10:30:00Z\"\n  },\n  \"message\": \"Personaje creado exitosamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Character",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"name\": \"Spider-Man (Peter Parker)\",\n  \"description\": \"El hombre araña con poderes de araña\",\n  \"imageUrl\": \"https://example.com/spiderman-updated.jpg\",\n  \"marvelId\": \"1009610\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/characters/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters",
+								"1"
+							]
+						},
+						"description": "Actualiza un personaje existente"
+					},
+					"response": [
+						{
+							"name": "Character Updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 1,\n  \"name\": \"Spider-Man (Peter Parker)\",\n  \"description\": \"El hombre araña con poderes de araña\",\n  \"imageUrl\": \"https://example.com/spiderman-updated.jpg\",\n  \"marvelId\": \"1009610\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/characters/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Spider-Man (Peter Parker)\",\n    \"description\": \"El hombre araña con poderes de araña\",\n    \"imageUrl\": \"https://example.com/spiderman-updated.jpg\",\n    \"marvelId\": \"1009610\",\n    \"createdAt\": \"2024-01-15T10:30:00Z\",\n    \"updatedAt\": \"2024-01-15T10:35:00Z\",\n    \"isActive\": true,\n    \"lastSync\": \"2024-01-15T10:30:00Z\"\n  },\n  \"message\": \"Personaje actualizado exitosamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Character",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/characters/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"characters",
+								"1"
+							]
+						},
+						"description": "Elimina un personaje (soft delete)"
+					},
+					"response": [
+						{
+							"name": "Character Deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/characters/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"characters",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"success\": true,\n  \"message\": \"Personaje eliminado exitosamente\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Endpoints para gestionar personajes de Marvel"
+		},
+		{
+			"name": "Weather Forecast",
+			"item": [
+				{
+					"name": "Get Weather Forecast",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/weatherforecast",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"weatherforecast"
+							]
+						},
+						"description": "Obtiene el pronóstico del tiempo (endpoint de ejemplo)"
+					},
+					"response": [
+						{
+							"name": "Weather Forecast",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/weatherforecast",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"weatherforecast"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"date\": \"2024-01-16\",\n    \"temperatureC\": 25,\n    \"temperatureF\": 76,\n    \"summary\": \"Warm\"\n  },\n  {\n    \"date\": \"2024-01-17\",\n    \"temperatureC\": 18,\n    \"temperatureF\": 64,\n    \"summary\": \"Cool\"\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "Endpoint de ejemplo del template de .NET"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-set Authorization header if token exists",
+					"const token = pm.environment.get('auth_token');",
+					"if (token) {",
+					"    pm.request.headers.add({",
+					"        key: 'Authorization',",
+					"        value: `Bearer ${token}`",
+					"    });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-save token from login/register responses",
+					"if (pm.response.code === 200) {",
+					"    const responseJson = pm.response.json();",
+					"    if (responseJson.success && responseJson.data && responseJson.data.token) {",
+					"        pm.environment.set('auth_token', responseJson.data.token);",
+					"        console.log('Token saved to environment');",
+					"    }",
+					"}",
+					"",
+					"// Log response for debugging",
+					"console.log('Response Status:', pm.response.status);",
+					"console.log('Response Time:', pm.response.responseTime + 'ms');"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5150",
+			"type": "string",
+			"description": "URL base de la API"
+		}
+	]
+}

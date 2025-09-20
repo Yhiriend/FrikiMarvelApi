@@ -1,0 +1,124 @@
+@FrikiMarvelApi_HostAddress = http://localhost:5150
+
+### Health Check
+GET {{FrikiMarvelApi_HostAddress}}/health
+Accept: application/json
+
+###
+
+### Register User
+POST {{FrikiMarvelApi_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Juan Pérez",
+  "identification": "12345678",
+  "email": "juan@example.com",
+  "password": "password123"
+}
+
+###
+
+### Login User
+POST {{FrikiMarvelApi_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "juan@example.com",
+  "password": "password123"
+}
+
+###
+
+### Get Characters
+GET {{FrikiMarvelApi_HostAddress}}/api/characters
+Accept: application/json
+
+###
+
+### Get Marvel Characters
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/characters?limit=10&offset=0
+Accept: application/json
+
+###
+
+### Get Marvel Character by ID
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/characters/1009610
+Accept: application/json
+
+###
+
+### Search Marvel Characters by Name
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/characters/search?name=spider-man&limit=5
+Accept: application/json
+
+###
+
+### Get Marvel Comics
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/comics?limit=10&offset=0
+Accept: application/json
+
+###
+
+### Get Marvel Comic by ID
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/comics/82967
+Accept: application/json
+
+###
+
+### Search Marvel Comics by Title
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/comics/search?title=spider-man&limit=5
+Accept: application/json
+
+###
+
+### Get Marvel Comics with Filters
+GET {{FrikiMarvelApi_HostAddress}}/api/marvel/comics?format=comic&startYear=2020&endYear=2024&limit=10
+Accept: application/json
+
+###
+
+### Add Comic to Favorites
+POST {{FrikiMarvelApi_HostAddress}}/api/comicfavorites
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "comicId": 82967,
+  "imageUrl": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+  "format": "Comic",
+  "title": "Marvel Previews (2017)",
+  "onSaleDate": "2017-02-15T00:00:00-0500",
+  "author": "Marvel Comics",
+  "price": 0.00,
+  "characters": "Spider-Man, Iron Man, Captain America"
+}
+
+###
+
+### Get User Favorites
+GET {{FrikiMarvelApi_HostAddress}}/api/comicfavorites
+Authorization: Bearer {{auth_token}}
+Accept: application/json
+
+###
+
+### Check if Comic is Favorite
+GET {{FrikiMarvelApi_HostAddress}}/api/comicfavorites/82967/check
+Authorization: Bearer {{auth_token}}
+Accept: application/json
+
+###
+
+### Remove Comic from Favorites
+DELETE {{FrikiMarvelApi_HostAddress}}/api/comicfavorites/82967
+Authorization: Bearer {{auth_token}}
+Accept: application/json
+
+###
+
+### Weather Forecast
+GET {{FrikiMarvelApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
