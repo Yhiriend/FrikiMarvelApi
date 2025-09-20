@@ -14,7 +14,8 @@ public class JwtAuthenticationMiddleware
     private static readonly string[] PublicRoutes = {
         "/api/auth/login",
         "/api/auth/register",
-        "/health",
+        "/api/health",
+        "/api/health/ping",
         "/swagger",
         "/openapi"
     };
