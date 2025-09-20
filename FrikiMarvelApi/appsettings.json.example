@@ -10,7 +10,7 @@
     "DefaultConnection": "Server=localhost;Port=3306;Database=FrikiMarvelDB;Uid=root;Pwd=;"
   },
   "Jwt": {
-    "SecretKey": "aqui_tu_secreto_para_hash",
+    "SecretKey": "jkAUM5KjpIDEISCixp2HdqjyYthtj663",
     "Issuer": "FrikiMarvelApi",
     "Audience": "FrikiMarvelApiUsers",
     "ExpirationHours": 24
